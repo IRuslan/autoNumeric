@@ -3426,11 +3426,7 @@ if (typeof define === 'function' && define.amd) {
                     // Move the caret to the right if the `androidCharEntered` is the decimal character or if it's on the left of the caret position
                     if (androidCharEntered === holder.settings.decimalCharacter ||
                         !hasDecimalCharacter && decimalCharacterPosition < holder.settings.androidSelectionStart) {
-                        holder.settings.androidSelectionStart += holder.settings.decimalCharacter.length;
-                    }
-
-                    if (holder.settingsClone.currencySymbolPlacement === 'p' && holder.settingsClone.currencySymbol.length) {
-                        holder.settings.androidSelectionStart += holder.settingsClone.currencySymbol.length;
+                        holder.settings.androidSelectionStart = holder.selection.start + 1;
                     }
 
                     if (e.target.value.length > value.length) {
